@@ -1,0 +1,26 @@
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-Client',
+  templateUrl: './Client.component.html',
+  styleUrls: ['./Client.component.css']
+})
+export class ClientComponent implements OnInit {
+
+  clients: any;
+  
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.getClients();
+  }
+
+  getClients() {
+    this.http.get('http://localhost:5000/api/clients').subscribe(response => {
+      this.clients = response;
+    }, error => {
+      console.log(error);
+    })
+  }
+}
