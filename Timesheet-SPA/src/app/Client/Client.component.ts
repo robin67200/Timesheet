@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
+// tslint:disable-next-line: component-selector
   selector: 'app-Client',
   templateUrl: './Client.component.html',
   styleUrls: ['./Client.component.css']
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class ClientComponent implements OnInit {
 
   clients: any;
-  
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -21,6 +22,6 @@ export class ClientComponent implements OnInit {
       this.clients = response;
     }, error => {
       console.log(error);
-    })
+    });
   }
 }
