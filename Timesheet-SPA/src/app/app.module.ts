@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ClientComponent } from './Client/Client.component';
+import { ClientComponent } from './client/client.component';
 
 @NgModule({
    declarations: [
