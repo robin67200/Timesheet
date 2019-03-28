@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClientComponent implements OnInit {
 
-  clients: any;
+  Clients: any;
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +19,7 @@ export class ClientComponent implements OnInit {
 
   getClients() {
     this.http.get('http://localhost:5000/api/clients').subscribe(response => {
-      this.clients = response;
+      this.Clients = response;
     }, error => {
       console.log(error);
     });
