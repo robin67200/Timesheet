@@ -27,20 +27,20 @@ namespace Timesheet.API.Controllers
             return Ok(projets);
         }
 
-        // GET api/clients/5
+        // GET api/projets/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetClient(int id)
+        public async Task<IActionResult> GetProjet(int id)
         {
-            var client = await _context.Clients.FirstOrDefaultAsync(x => x.ID == id);
+            var projet = await _context.Projets.FirstOrDefaultAsync(x => x.ID == id);
 
-            return Ok(client);
+            return Ok(projet);
         }
 
-        // POST api/clients
+        // POST api/projets
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Client client)
+        public async Task<IActionResult> Post([FromBody] Projet projet)
         {
-            _context.Clients.Add(client);
+            _context.Projets.Add(projet);
             await _context.SaveChangesAsync();
             
             return Ok();
@@ -48,15 +48,15 @@ namespace Timesheet.API.Controllers
 
         // PUT api/clients/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Client client)
+        public async Task<IActionResult> Put(int id, [FromBody] Projet projet)
         {
-            var dbClient = _context.Clients.FirstOrDefault(x => x.ID == id);
-            dbClient.Name = client.Name;
-            dbClient.Residence = client.Residence;
-            dbClient.Phone = client.Phone;
-            dbClient.Mail = client.Mail;
+            var dbProjet = _context.Projets.FirstOrDefault(x => x.ID == id);
+            dbProjet.Name = projet.Name;
+            dbProjet.Type = projet.Type;
+            dbProjet.Price = projet.Price;
+            dbProjet.ClientId = projet.ClientId;
 
-            _context.Clients.Update(dbClient);
+            _context.Projets.Update(dbProjet);
             await _context.SaveChangesAsync();
 
             return Ok();
@@ -66,8 +66,8 @@ namespace Timesheet.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-             var dbClient = _context.Clients.FirstOrDefault(x => x.ID == id);
-             _context.Remove(dbClient);
+             var dbProjet = _context.Projets.FirstOrDefault(x => x.ID == id);
+             _context.Remove(dbProjet);
              await _context.SaveChangesAsync();
 
              return Ok();
