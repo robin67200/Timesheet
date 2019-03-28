@@ -36,7 +36,7 @@ namespace Timesheet.API.Controllers
 
             return Ok(client);
         }
-
+        
         // POST api/clients
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Client client)
