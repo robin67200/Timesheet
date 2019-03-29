@@ -63,5 +63,16 @@ namespace Timesheet.API.Controllers
 
             return Ok();
         }
+
+        // DELETE api/user/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+             var dbUser = _context.Users.FirstOrDefault(x => x.ID == id);
+             _context.Remove(dbUser);
+             await _context.SaveChangesAsync();
+
+             return Ok();
+        } 
     }
 }
