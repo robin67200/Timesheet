@@ -8,13 +8,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { DayComponent } from './day/day.component';
 import { ProjetComponent } from './projet/projet.component';
+import { CreateClientComponent } from './create-client/create-client.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const appRoutes: Routes = [
    {path: 'clients', component: ClientComponent},
    {path: 'users', component: UserComponent},
    {path: 'days', component: DayComponent},
-   {path: 'projets', component: ProjetComponent}
+   {path: 'projets', component: ProjetComponent},
+   {path: 'clients/create', component: CreateClientComponent}
 ];
 
 @NgModule({
@@ -23,12 +26,14 @@ const appRoutes: Routes = [
       ClientComponent,
       UserComponent,
       DayComponent,
-      ProjetComponent
+      ProjetComponent,
+      CreateClientComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      ReactiveFormsModule
    ],
    providers: [],
    bootstrap: [
