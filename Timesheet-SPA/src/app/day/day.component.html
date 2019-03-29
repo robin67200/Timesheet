@@ -1,5 +1,14 @@
 <h1>Clients</h1>
 <br />
+<form (ngSubmit)="select()" >
+  <div class="form-group">
+      <select class="form-control w-25">
+        <option *ngFor="let user of users" >{{user.name}}</option>
+      </select>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -17,16 +26,16 @@
            </th>
         </tr>
     </thead>
-    <tbody *ngFor="let day of days">
-        <tr>
+    <tbody>
+        <tr *ngFor="let day of days">
             <td>
-                {{day.userId}}  
+                {{day.userId}}
             </td>
             <td>
                 {{day.projetId}}
             </td>
             <td>
-                {{day.date}} 
+                {{day.date}}
             </td>
             <td>
                 {{day.timeSpent}}
