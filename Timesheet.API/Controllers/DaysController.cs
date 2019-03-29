@@ -29,10 +29,19 @@ namespace Timesheet.API.Controllers
 
         // GET api/days/(userid)/(projetid)/(date)
         [HttpGet("{userId}/{projetId}/{date}")]
-        public async Task<IActionResult> GetDay(int userId, int projetId, DateTime date)
+        public async Task<IActionResult> GetOneDay(int userId, int projetId, DateTime date)
         {
             var days = await _context.Days.ToListAsync();
             var day = days.FirstOrDefault(x => x.UserId == userId && x.ProjetId == projetId && x.Date == date);
+
+            return Ok(day);
+        }
+        // GET api/days/(userid)/(projetid)/(date)
+        [HttpGet("{userId}/{date}")]
+        public async Task<IActionResult> GetDay(int userId, DateTime date)
+        {
+            var days = await _context.Days.ToListAsync();
+            var day = days.ToList().Where(x => x.UserId == userId && x.Date.Month == date.Month && x.Date.Year == date.Year);
 
             return Ok(day);
         }

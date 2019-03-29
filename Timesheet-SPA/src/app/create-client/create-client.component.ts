@@ -13,7 +13,7 @@ export class CreateClientComponent implements OnInit {
 
   createClient: FormGroup;
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
+  constructor(private http: HttpClient, fb: FormBuilder, private router: Router) {
     this.createClient = fb.group(
       {
         name: ['', Validators.required],
