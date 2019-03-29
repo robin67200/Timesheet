@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Timesheet.API.Models
 {
     public class User
@@ -9,5 +11,6 @@ namespace Timesheet.API.Models
         public string Mail {get; set;}
         public string Statut {get; set;}
         public float Salary {get; set;}
+        public ICollection<Day> days {get; set;}
     }
 }

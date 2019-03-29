@@ -22,12 +22,13 @@ namespace Timesheet.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProjets()
         {
-            var projets = await _context.Projets.ToListAsync();
+            var projets = await _context.Projets.Include(x => x.Days)
+            .ToListAsync();
 
             return Ok(projets);
         }
 
-        // GET api/projets/5
+        // GET api/projets/(id)
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProjet(int id)
         {
@@ -46,7 +47,7 @@ namespace Timesheet.API.Controllers
             return Ok();
         }
 
-        // PUT api/clients/5
+        // PUT api/projet/(id)
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Projet projet)
         {
