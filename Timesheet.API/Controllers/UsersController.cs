@@ -10,10 +10,10 @@ namespace Timesheet.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly TimesheetAPIContext _context;
-        public UserController (TimesheetAPIContext context)
+        public UsersController (TimesheetAPIContext context)
        {
            _context = context;
        }
