@@ -11,7 +11,8 @@ import { DayComponent } from './day/day.component';
 
 const appRoutes: Routes = [
    {path: 'clients', component: ClientComponent},
-   {path: 'users', component: UserComponent}
+   {path: 'users', component: UserComponent},
+   {path: 'days', component: DayComponent}
 ];
 
 @NgModule({

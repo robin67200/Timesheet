@@ -1,3 +1,36 @@
-<p>
-  day works!
-</p>
+<h1>Clients</h1>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                UserId
+            </th>
+           <th>
+                ProjetId
+           </th>
+           <th>
+                Date
+           </th>
+           <th>
+                Time Spent
+           </th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let day of days">
+        <tr>
+            <td>
+                {{day.userId}}  
+            </td>
+            <td>
+                {{day.projetId}}
+            </td>
+            <td>
+                {{day.date}} 
+            </td>
+            <td>
+                {{day.timeSpent}}
+            </td>
+        </tr>
+    </tbody>
+</table>
