@@ -29,48 +29,46 @@ namespace Timesheet.API.Controllers
 
         // GET api/days/5
         [HttpGet("{userId}/{projetId}/{date}")]
-        public async Task<IActionResult> GetDay(int userId, int projetId, DateTime date )
+        public async Task<IActionResult> GetDay(int userId, int projetId, DateTime date)
         {
-            var day = await _context.Days.FirstOrDefaultAsync(x => x.UserId == userId && x.ProjetId == projetId && x.Date == date);
+            var days = await _context.Days.ToListAsync();
+            var day = days.FirstOrDefault(x => x.UserId == userId && x.ProjetId == projetId && x.Date == date);
 
             return Ok(day);
         }
 
         // POST api/days
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Client client)
+        public async Task<IActionResult> Post([FromBody] Day day)
         {
-            _context.Clients.Add(client);
+            _context.Days.Add(day);
             await _context.SaveChangesAsync();
             
             return Ok();
         }
 
         // PUT api/clients/5
-        [HttpPut("{}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Client client)
+        [HttpPut("{userId}/{projetId}/{date}")]
+        public async Task<IActionResult> Put(int userId, int projetId, DateTime date, [FromBody] Day day)
         {
-            var dbClient = _context.Clients.FirstOrDefault(x => x.ID == id);
-            dbClient.Name = client.Name;
-            dbClient.Residence = client.Residence;
-            dbClient.Phone = client.Phone;
-            dbClient.Mail = client.Mail;
-
-            _context.Clients.Update(dbClient);
+            var dbDays = await _context.Days.ToListAsync();
+            var dbDay = dbDays.FirstOrDefault(x => x.UserId == userId && x.ProjetId == projetId && x.Date == date);
+            dbDay.TimeSpent = day.TimeSpent;
+            _context.Days.Update(dbDay);
             await _context.SaveChangesAsync();
 
             return Ok();
         }
 
         // DELETE api/clients/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{userId}/{projetId}/{date}")]
+        public async Task<IActionResult> Delete(int userId, int projetId, DateTime date)
         {
-             var dbClient = _context.Clients.FirstOrDefault(x => x.ID == id);
-             _context.Remove(dbClient);
-             await _context.SaveChangesAsync();
-
-             return Ok();
+            var dbDays = await _context.Days.ToListAsync();
+            var dbDay = dbDays.FirstOrDefault(x => x.UserId == userId && x.ProjetId == projetId && x.Date == date);
+            _context.Remove(dbDay);
+            await _context.SaveChangesAsync();
+            return Ok();
         } 
     }
 }
