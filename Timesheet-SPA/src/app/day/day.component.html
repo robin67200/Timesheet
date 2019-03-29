@@ -2,7 +2,7 @@
 <h2>Days</h2>
 <br />
 <br />
-<form (ngSubmit)="select()" >
+<form [formGroup]="search" (Submit)="select()">
   <div class="form-group">
       <select class="form-control w-25">
         <option *ngFor="let user of users" >{{user.name}}</option>
