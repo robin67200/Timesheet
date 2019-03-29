@@ -36,7 +36,7 @@ namespace Timesheet.API.Controllers
             return Ok(day);
         }
 
-        // POST api/clients
+        // POST api/days
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Client client)
         {
@@ -47,7 +47,7 @@ namespace Timesheet.API.Controllers
         }
 
         // PUT api/clients/5
-        [HttpPut("{id}")]
+        [HttpPut("{}")]
         public async Task<IActionResult> Put(int id, [FromBody] Client client)
         {
             var dbClient = _context.Clients.FirstOrDefault(x => x.ID == id);
