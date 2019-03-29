@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class CreateClientComponent implements OnInit {
 
   createClient: FormGroup;
 
-  constructor(private http: HttpClient, fb: FormBuilder) {
+  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
     this.createClient = fb.group(
       {
         name: ['', Validators.required],
@@ -27,7 +28,9 @@ export class CreateClientComponent implements OnInit {
   }
 
   PostClient() {
-    this.http.post('http://localhost:5000/api/clients', this.createClient.value).subscribe();
+    this.http.post('http://localhost:5000/api/clients', this.createClient.value).subscribe(res => {
+      this.router.navigate(['/clients']);
+    });
   }
 
 }

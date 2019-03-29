@@ -2,6 +2,8 @@
 <h1>Clients</h1>
 <br />
 <br />
+<a [routerLink]="['/clients/create']">new client</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -22,13 +24,13 @@
     <tbody *ngFor="let client of clients">
         <tr>
             <td>
-                {{client.name}}  
+                {{client.name}}
             </td>
             <td>
                 {{client.residence}}
             </td>
             <td>
-                {{client.phone}} 
+                {{client.phone}}
             </td>
             <td>
                 {{client.mail}}
