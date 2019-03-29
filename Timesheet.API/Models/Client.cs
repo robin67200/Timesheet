@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Timesheet.API.Models
 {
     public class Client
@@ -7,5 +9,7 @@ namespace Timesheet.API.Models
         public string Residence {get; set;}
         public string Phone {get; set;}
         public string Mail {get; set;}
+
+        public ICollection<Projet> projets {get; set;}
     }
 }

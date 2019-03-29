@@ -23,7 +23,8 @@ namespace Timesheet.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetClients()
         {
-            var clients = await _context.Clients.ToListAsync();
+            var clients = await _context.Clients.Include(x => x.projets)
+            .ToListAsync();
 
             return Ok(clients);
         }
@@ -32,7 +33,8 @@ namespace Timesheet.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetClient(int id)
         {
-            var client = await _context.Clients.FirstOrDefaultAsync(x => x.ID == id);
+            var client = await _context.Clients.Include(x => x.projets)
+            .FirstOrDefaultAsync(x => x.ID == id);
 
             return Ok(client);
         }
