@@ -5,16 +5,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ClientComponent } from './client/client.component';
 import { Routes, RouterModule } from '@angular/router';
+import { UserComponent } from './user/user.component';
 
 
 const appRoutes: Routes = [
-   {path: 'clients', component: ClientComponent}
+   {path: 'clients', component: ClientComponent},
+   {path: 'users', component: UserComponent}
 ];
 
 @NgModule({
    declarations: [
       AppComponent,
-      ClientComponent
+      ClientComponent,
+      UserComponent
    ],
    imports: [
       BrowserModule,
