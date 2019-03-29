@@ -27,7 +27,7 @@ namespace Timesheet.API.Controllers
             return Ok(days);
         }
 
-        // GET api/days/5
+        // GET api/days/(userid)/(projetid)/(date)
         [HttpGet("{userId}/{projetId}/{date}")]
         public async Task<IActionResult> GetDay(int userId, int projetId, DateTime date)
         {
