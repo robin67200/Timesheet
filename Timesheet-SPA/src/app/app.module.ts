@@ -7,12 +7,14 @@ import { ClientComponent } from './client/client.component';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { DayComponent } from './day/day.component';
+import { ProjetComponent } from './projet/projet.component';
 
 
 const appRoutes: Routes = [
    {path: 'clients', component: ClientComponent},
    {path: 'users', component: UserComponent},
-   {path: 'days', component: DayComponent}
+   {path: 'days', component: DayComponent},
+   {path: 'projets', component: ProjetComponent}
 ];
 
 @NgModule({
@@ -20,7 +22,8 @@ const appRoutes: Routes = [
       AppComponent,
       ClientComponent,
       UserComponent,
-      DayComponent
+      DayComponent,
+      ProjetComponent
    ],
    imports: [
       BrowserModule,
@@ -29,7 +32,7 @@ const appRoutes: Routes = [
    ],
    providers: [],
    bootstrap: [
-      AppComponent,
+      AppComponent
    ]
 })
 export class AppModule { }

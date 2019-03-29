@@ -1,37 +1,37 @@
 <br />
-<h2>Days</h2>
+<h2>Projets</h2>
 <br />
 <br />
 <table class="table">
     <thead>
         <tr>
             <th>
-                UserId
+                Name
             </th>
            <th>
-                ProjetId
+                Type
            </th>
            <th>
-                Date
+                Price
            </th>
            <th>
-                Time Spent
+                ClientId
            </th>
         </tr>
     </thead>
-    <tbody *ngFor="let day of days">
+    <tbody *ngFor="let projet of projets">
         <tr>
             <td>
-                {{day.userId}}  
+                {{projet.name}}  
             </td>
             <td>
-                {{day.projetId}}
+                {{projet.type}}
             </td>
             <td>
-                {{day.date}} 
+                {{projet.price}} 
             </td>
             <td>
-                {{day.timeSpent}}
+                {{projet.clientId}}
             </td>
         </tr>
     </tbody>
