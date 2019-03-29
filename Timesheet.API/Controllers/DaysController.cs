@@ -51,6 +51,7 @@ namespace Timesheet.API.Controllers
         [HttpPut("{userId}/{projetId}/{date}")]
         public async Task<IActionResult> Put(int userId, int projetId, DateTime date, [FromBody] Day day)
         {
+           
             var dbDays = await _context.Days.ToListAsync();
             var dbDay = dbDays.FirstOrDefault(x => x.UserId == userId && x.ProjetId == projetId && x.Date == date);
             dbDay.TimeSpent = day.TimeSpent;

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ClientComponent } from './client/client.component';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
+import { DayComponent } from './day/day.component';
 
 
 const appRoutes: Routes = [
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
    declarations: [
       AppComponent,
       ClientComponent,
-      UserComponent
+      UserComponent,
+      DayComponent
    ],
    imports: [
       BrowserModule,
@@ -26,7 +28,7 @@ const appRoutes: Routes = [
    ],
    providers: [],
    bootstrap: [
-      AppComponent
+      AppComponent,
    ]
 })
 export class AppModule { }

@@ -1,3 +1,36 @@
-<p *ngFor="let client of clients">
-   {{client.name}}, {{client.residence}}, {{client.phone}}, {{client.mail}}
-</p>
+<h1>Clients</h1>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+           <th>
+               Residence
+           </th>
+           <th>
+               Phone
+           </th>
+           <th>
+               Mail
+           </th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let client of clients">
+        <tr>
+            <td>
+                {{client.name}}  
+            </td>
+            <td>
+                {{client.residence}}
+            </td>
+            <td>
+                {{client.phone}} 
+            </td>
+            <td>
+                {{client.mail}}
+            </td>
+        </tr>
+    </tbody>
+</table>
