@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-day',
@@ -8,6 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./day.component.css']
 })
 export class DayComponent implements OnInit {
+  critere: any;
   search: FormGroup;
   days: any;
   users: any;
@@ -47,7 +49,16 @@ export class DayComponent implements OnInit {
       }
     );
   }
-  select()
-  {
+  select() {
+    this.critere = this.search.value;
+    console.warn(this.critere);
+    this.http.get('http://localhost:5000/api/days/' + this.critere.name + '/' + this.critere.month ).subscribe(
+      response => {
+        this.days = response;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
