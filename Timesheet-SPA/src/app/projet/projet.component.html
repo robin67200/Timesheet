@@ -1,5 +1,5 @@
 <br />
-<h1>Clients</h1>
+<h2>Projets</h2>
 <br />
 <br />
 <table class="table">
@@ -9,29 +9,29 @@
                 Name
             </th>
            <th>
-               Residence
+                Type
            </th>
            <th>
-               Phone
+                Price
            </th>
            <th>
-               Mail
+                ClientId
            </th>
         </tr>
     </thead>
-    <tbody *ngFor="let client of clients">
+    <tbody *ngFor="let projet of projets">
         <tr>
             <td>
-                {{client.name}}  
+                {{projet.name}}  
             </td>
             <td>
-                {{client.residence}}
+                {{projet.type}}
             </td>
             <td>
-                {{client.phone}} 
+                {{projet.price}} 
             </td>
             <td>
-                {{client.mail}}
+                {{projet.clientId}}
             </td>
         </tr>
     </tbody>
