@@ -15,6 +15,8 @@ namespace Timesheet.API.DataAccess {
             builder.Property(x => x.Residence).HasColumnName("Residence").HasColumnType("TEXT").IsRequired();
             builder.Property(x => x.Phone).HasColumnName("Phone").HasColumnType("TEXT").IsRequired();
             builder.Property(x => x.Mail).HasColumnName("Mail").HasColumnType("TEXT").IsRequired();
+
+            builder.HasMany(x => x.projets).WithOne().HasForeignKey(x => x.ClientId);
         }
     }
 }
