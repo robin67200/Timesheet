@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-day',
@@ -7,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./day.component.css']
 })
 export class DayComponent implements OnInit {
+  search: FormGroup;
   days: any;
   users: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private fb: FormBuilder) {
+    this.search = fb.group(
+      {
+        name: ['', Validators.required],
+        month: ['', Validators.required]
+      }
+    );
+  }
 
   ngOnInit() {
     this.GetDays();
