@@ -10,6 +10,7 @@ import { DayComponent } from './day/day.component';
 import { ProjetComponent } from './projet/projet.component';
 import { CreateClientComponent } from './create-client/create-client.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateProjetComponent } from './create-projet/create-projet.component';
 
 
 const appRoutes: Routes = [
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
    {path: 'users', component: UserComponent},
    {path: 'days', component: DayComponent},
    {path: 'projets', component: ProjetComponent},
-   {path: 'clients/create', component: CreateClientComponent}
+   {path: 'clients/create', component: CreateClientComponent},
+   {path: 'projets/create', component: CreateProjetComponent}
 ];
 
 @NgModule({
@@ -27,7 +29,8 @@ const appRoutes: Routes = [
       UserComponent,
       DayComponent,
       ProjetComponent,
-      CreateClientComponent
+      CreateClientComponent,
+      CreateProjetComponent
    ],
    imports: [
       BrowserModule,
