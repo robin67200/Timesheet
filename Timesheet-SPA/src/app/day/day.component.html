@@ -1,5 +1,5 @@
 <br />
-<h2>Days</h2>
+<h2 class="text-center">Days</h2>
 <br />
 <br />
 <form [formGroup]="search" (ngSubmit)="select()">
@@ -37,7 +37,7 @@
                 {{day.projetId}}
             </td>
             <td>
-                {{day.date}}
+                {{day.date | date: 'dd.MM.yyyy'}}
             </td>
             <td>
                 {{day.timeSpent}}

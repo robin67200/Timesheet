@@ -1,0 +1,42 @@
+<div class="container">
+  <br />
+  <h2 style="text-align:center">Clients</h2>
+  <br />
+  <br />
+  <a [routerLink]="['/clients/create']">new client</a>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Residence
+        </th>
+        <th>
+          Phone
+        </th>
+        <th>
+          Mail
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let client of clients">
+      <tr [routerLink]="['/clients/detail',client.id]">
+        <td>
+          {{ client.name }}
+        </td>
+        <td>
+          {{ client.residence }}
+        </td>
+        <td>
+          {{ client.phone }}
+        </td>
+        <td>
+          {{ client.mail }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
