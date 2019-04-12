@@ -17,6 +17,7 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { ProjetCreateComponent } from './projets/projet-create/projet-create.component';
 import { ProjetDetailComponent } from './projets/projet-detail/projet-detail.component';
+import { ProjetEditComponent } from './projets/projet-edit/projet-edit.component';
 
 @NgModule({
    declarations: [
@@ -29,6 +30,7 @@ import { ProjetDetailComponent } from './projets/projet-detail/projet-detail.com
       ProjetListComponent,
       ProjetCreateComponent,
       ProjetDetailComponent,
+      ProjetEditComponent,
       ClientListComponent,
       ClientCreateComponent,
       ClientDetailComponent,

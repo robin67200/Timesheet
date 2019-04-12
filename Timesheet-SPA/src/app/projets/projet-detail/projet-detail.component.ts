@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { TimeSheetsService } from 'src/app/services/timeSheets.service';
 
 @Component({
   selector: 'app-projet-detail',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjetDetailComponent implements OnInit {
 
-  constructor() { }
+  id: number;
+  projet: any;
 
-  ngOnInit() {
+  constructor(route: ActivatedRoute, private service: TimeSheetsService) {
+    route.params.forEach((params: Params) => {
+      if (params.id != null) {
+        this.id = +params.id;
+      }
+    });
   }
 
+  ngOnInit() {
+    this.service.getProjetsById(this.id).subscribe(res => {
+      this.projet = res;
+      // const currentCode = codes.find(c => c.OP_CODE === this.societe.operationCode);
+    });
+  }
 }

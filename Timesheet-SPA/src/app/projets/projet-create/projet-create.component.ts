@@ -9,7 +9,9 @@ import { TimeSheetsService } from 'src/app/services/timeSheets.service';
   styleUrls: ['./projet-create.component.css']
 })
 export class ProjetCreateComponent implements OnInit {
+
   createProjet: FormGroup;
+  clients: any;
 
   constructor(
     private service: TimeSheetsService,
@@ -24,7 +26,11 @@ export class ProjetCreateComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.service.getClients().subscribe(res => {
+      this.clients = res;
+    });
+  }
 
   send() {
     this.service.postClient(this.createProjet).subscribe(res => {

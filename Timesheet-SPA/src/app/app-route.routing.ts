@@ -11,6 +11,7 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { ClientEditComponent } from './clients/client-edit/client-edit.component';
+import { ProjetEditComponent } from './projets/projet-edit/projet-edit.component';
 
 const routes: Routes = [
   {path: 'users', component: UserListComponent},
@@ -22,8 +23,9 @@ const routes: Routes = [
   {path: 'clients/detail/:id', component: ClientDetailComponent},
   {path: 'clients/edit/:id', component: ClientEditComponent},
   {path: 'projets', component: ProjetListComponent},
-  {path: 'projet/create', component: ProjetCreateComponent},
-  {path: 'projet/detail/:id', component: ProjetDetailComponent}
+  {path: 'projets/create', component: ProjetCreateComponent},
+  {path: 'projets/detail/:id', component: ProjetDetailComponent},
+  {path: 'projets/edit/:id', component: ProjetEditComponent}
 ];
 
 

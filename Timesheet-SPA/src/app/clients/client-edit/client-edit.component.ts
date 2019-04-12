@@ -34,7 +34,7 @@ export class ClientEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getClientsByid(this.id).subscribe(res => {
+    this.service.getClientsById(this.id).subscribe(res => {
       this.editClient.patchValue(res);
     });
   }
