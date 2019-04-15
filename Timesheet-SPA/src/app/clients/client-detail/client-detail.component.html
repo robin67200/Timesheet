@@ -1,0 +1,16 @@
+<div class="container">
+  <h4 style="text-align:center">Client {{client.id}}</h4>
+  <hr />
+  <div class="row">
+    <div class="col-3">
+      <p>name: {{client.name}}</p>
+      <p>residence: {{client.residence}}</p>
+      <p>phone: {{client.phone}}</p>
+      <p>mail: {{client.mail}}</p>
+      <a [routerLink]="['/clients/edit',client.id]">edit</a>
+    </div>
+  </div>
+  <div style="text-align:center">
+    <a [routerLink]="['/clients']">Back to Clients</a>
+</div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+  <br />
+  <h2 class="text-center">Projets</h2>
+  <br />
+  <br />
+  <a [routerLink]="['/projets/create']">new projet</a>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Type
+        </th>
+        <th>
+          Price
+        </th>
+        <th>
+          ClientId
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let projet of projets">
+      <tr [routerLink]="['/projets/detail',projet.id]">
+        <td>
+          {{ projet.name }}
+        </td>
+        <td>
+          {{ projet.type }}
+        </td>
+        <td>
+          {{ projet.price }}
+        </td>
+        <td>
+          {{ projet.clientId }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

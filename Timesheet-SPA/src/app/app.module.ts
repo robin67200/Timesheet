@@ -6,12 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
-import { ClientComponent } from './client/client.component';
-import { Routes, RouterModule } from '@angular/router';
-import { UserComponent } from './user/user.component';
 import { DayComponent } from './day/day.component';
-import { ProjetComponent } from './projet/projet.component';
-import { CreateClientComponent } from './create-client/create-client.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateProjetComponent } from './create-projet/create-projet.component';
 import { NavComponent } from './nav/nav.component';
@@ -42,8 +37,10 @@ const appRoutes: Routes = [
 @NgModule({
    declarations: [
       AppComponent,
-      ClientComponent,
-      UserComponent,
+      UserListComponent,
+      UserCreateComponent,
+      UserDetailComponent,
+      UserEditComponent,
       DayComponent,
       ProjetComponent,
       CreateClientComponent,

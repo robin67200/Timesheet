@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
-export class UserComponent implements OnInit {
+export class UserListComponent implements OnInit {
 
   users: any;
 
