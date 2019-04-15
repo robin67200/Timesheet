@@ -16,6 +16,9 @@ namespace Timesheet.API.Models
 
         public DbSet<Timesheet.API.Models.User> Users { get; set; }
         public DbSet<Timesheet.API.Models.Day> Days { get; set; }
+        public DbSet<Timesheet.API.Models.Consumer> Consumers {get; set;}
+
+        
 
        
 
@@ -27,6 +30,7 @@ namespace Timesheet.API.Models
             modelBuilder.ApplyConfiguration(new ProjetConfig());
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new DayConfig());
+            modelBuilder.ApplyConfiguration(new ConsumerConfig());
             
 
 

@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Timesheet.API.Models;
 
 namespace Timesheet.API.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class ClientsController : ControllerBase
@@ -20,6 +22,7 @@ namespace Timesheet.API.Controllers
        }
        
         // GET api/clients
+        
         [HttpGet]
         public async Task<IActionResult> GetClients()
         {

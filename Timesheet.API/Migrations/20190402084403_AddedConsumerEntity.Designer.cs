@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Timesheet.API.Models;
 
 namespace Timesheet.API.Migrations
 {
     [DbContext(typeof(TimesheetAPIContext))]
-    partial class TimesheetAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20190402084403_AddedConsumerEntity")]
+    partial class AddedConsumerEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,28 +53,17 @@ namespace Timesheet.API.Migrations
             modelBuilder.Entity("Timesheet.API.Models.Consumer", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("Id")
-                        .HasColumnType("INTEGER");
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<byte[]>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnName("PasswordHash")
-                        .HasColumnType("BLOB");
+                    b.Property<byte[]>("PasswordHash");
 
-                    b.Property<byte[]>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnName("PasswordSalt")
-                        .HasColumnType("BLOB");
+                    b.Property<byte[]>("PasswordSalt");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnName("Username")
-                        .HasColumnType("TEXT");
+                    b.Property<string>("Username");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Consumer");
+                    b.ToTable("Consumers");
                 });
 
             modelBuilder.Entity("Timesheet.API.Models.Day", b =>

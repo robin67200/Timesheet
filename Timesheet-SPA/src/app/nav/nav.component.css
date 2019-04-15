@@ -1,0 +1,12 @@
+.dropdow-toggle, .dropdown-item{
+    cursor: pointer ;
+}
+.nav-item:hover{
+    background-color:#E2F4FF     
+}
+#gg:hover{
+    background-color:#F2FFFB     
+}
+#rv:hover{
+    background-color:#E2F4FF  
+}
