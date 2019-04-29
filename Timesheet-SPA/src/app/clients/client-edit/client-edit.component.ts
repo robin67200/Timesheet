@@ -1,8 +1,9 @@
-import { TimeSheetsService } from './../../services/timeSheets.service';
+import { ClientsService } from './../services/clients.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Client } from '../models/client';
 
 @Component({
   selector: 'app-client-edit',
@@ -10,6 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./client-edit.component.css']
 })
 export class ClientEditComponent implements OnInit {
+  
   id: number;
   editClient: FormGroup;
 
@@ -18,7 +20,7 @@ export class ClientEditComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     route: ActivatedRoute,
-    private service: TimeSheetsService
+    private service: ClientsService
   ) {
     this.editClient = fb.group({
       name: ['', Validators.required],
@@ -34,13 +36,19 @@ export class ClientEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getClientsById(this.id).subscribe(res => {
+    this.service.getClientById(this.id).subscribe(res => {
       this.editClient.patchValue(res);
     });
   }
 
   edit() {
-      this.service.putClient(this.id, this.editClient.value).subscribe(res => {
+    const newClient = new Client('Mrs.', 'Street', '+33', '@');
+    newClient.mail = this.editClient.value.mail;
+    newClient.residence = this.editClient.value.residence;
+    newClient.phone = this.editClient.value.phone;
+    newClient.mail = this.editClient.value.mail;
+    newClient.name = this.editClient.value.name;
+    this.service.putClient(this.id, newClient).subscribe(res => {
         this.router.navigate(['/clients/detail/' + this.id]);
       });
   }

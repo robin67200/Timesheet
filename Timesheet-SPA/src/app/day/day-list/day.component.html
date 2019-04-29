@@ -1,0 +1,45 @@
+<div class="container">
+  <br />
+  <h2 class="text-center">Days</h2>
+  <br />
+  <br />
+  <form [formGroup]="search" (ngSubmit)="select()">
+    <div class="form-group">
+      <select formControlName="name" class="form-control w-25">
+        <option *ngFor="let user of users" value="{{ user.id }}">{{
+          user.name
+        }}</option>
+      </select>
+      <select formControlName="projet" class="form-control w-25">
+        <option *ngFor="let proj of projet" value="{{ proj.id }}">{{
+          proj.name
+        }}</option>
+      </select>
+      <input class="form-control w-25" type="month" formControlName="month" />
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <h3 *ngIf="critere != null">{{ critere.month | date: 'MMMM/yyyy' }}</h3>
+  </form>
+  <table class="table" *ngIf="critere != null"  >
+      <thead>
+        <tr>
+          <th>
+
+          </th>
+          <th *ngFor="let day of projets.days" >
+            {{ day.date | date: 'dd'}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            {{ projets.name }}
+          </td>
+          <td *ngFor="let day of projets.days">
+            {{ day.timeSpend }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

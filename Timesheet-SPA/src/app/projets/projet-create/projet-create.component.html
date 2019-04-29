@@ -1,25 +1,51 @@
+<div class="container">
 <h2 style="text-align:center">Projet</h2>
 <hr />
 <div class="row">
     <div class="col-3 mx-auto">
-        <form [formGroup]="createProjet" (submit)="send()">
+        <form [formGroup]="createProjet" (submit)="Save()" #formDir="ngForm">
+            
             <div class="form-group">
-                <label class="control-label">Name</label>
-                <input formControlName="name" class="form-control" type="text" />
+                <label for="name" class="control-label">Name</label>
+                <input id="name" formControlName="name" class="form-control" type="text" required/> 
+                <div *ngIf="name.invalid" class="alert alert-danger">
+                    <div *ngIf="name.errors">
+                        Name is required with min 4 lenghts
+                    </div>
+                </div>
             </div>
+            
             <div class="form-group">
-                <label class="control-label">type</label>
-                <input formControlName="type" class="form-control" type="text"/>
+                <label  for="type" class="control-label">Type</label>
+                <input id="type" formControlName="type" class="form-control" required type="text"/>
+                    <div *ngIf="type.invalid " class="alert alert-danger">
+                        <div *ngIf="type.hasError">
+                            Type is required
+                        </div>
+                    </div>
             </div>
+            
             <div class="form-group">
-                <label class="control-label">price</label>
-                <input formControlName="price" class="form-control" type="text" />
+                <label for="price" class="control-label">Price</label>
+                <input id="price" formControlName="price" class="form-control" type="number" required />
+                    <div *ngIf="price.invalid " class="alert alert-danger">
+                        <div *ngIf="price.hasError">
+                            Price is required
+                        </div>
+                    </div>
             </div>
+            
+            
             <div class="form-group">
-              <select formControlName="name" class="form-control w-25">
-                <option *ngFor="let client of clients" value="{{client.id}}">{{client.name}}</option>
-              </select>
+              <label for="clientId" class="control-label">Client</label>  
+              <client-select [form]="createProjet"></client-select>
+                <div *ngIf="clientId.invalid " class="alert alert-danger">
+                    <div *ngIf="clientId.hasError">
+                        clientId is required
+                    </div>
+                </div>
             </div>
+            
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" />
             </div>
@@ -28,5 +54,21 @@
 </div>
 
 <div style="text-align:center">
-    <a [routerLink]="['/clients']">Back Projets</a>
+    <a [routerLink]="['/projets']">Back Projets</a>
 </div>
+
+<div *ngIf="hasError" class="alert alert-danger">
+    {{errorMessage}}
+</div>
+
+<div class="submitted-message" *ngIf="formDir.submitted">
+    <p style="background-color:#B9FFD2"> You've submitted your project, "{{createProjet.value.name}}" successfuly !</p>
+</div>
+
+
+
+</div>
+
+
+
+

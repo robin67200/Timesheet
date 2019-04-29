@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { TimeSheetsService } from 'src/app/services/timeSheets.service';
-
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Projet } from '../models/projet';
+import { ProjetsService } from '../services/projet.service';
+import { SimpleModalService } from 'ngx-simple-modal';
+import { ModalsComponent } from '../modals/modals.component';
 @Component({
   selector: 'app-projet-detail',
   templateUrl: './projet-detail.component.html',
@@ -10,9 +12,14 @@ import { TimeSheetsService } from 'src/app/services/timeSheets.service';
 export class ProjetDetailComponent implements OnInit {
 
   id: number;
-  projet: any;
+  projet: Projet = new Projet('Mrs', 'App', 0, 0);
 
-  constructor(route: ActivatedRoute, private service: TimeSheetsService) {
+
+  constructor(route: ActivatedRoute,
+              private service: ProjetsService,
+              private router: Router,
+              public modals: SimpleModalService
+              ) {
     route.params.forEach((params: Params) => {
       if (params.id != null) {
         this.id = +params.id;
@@ -21,9 +28,28 @@ export class ProjetDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getProjetsById(this.id).subscribe(res => {
+    this.service.getProjetById(this.id).subscribe(res => {
       this.projet = res;
       // const currentCode = codes.find(c => c.OP_CODE === this.societe.operationCode);
     });
   }
+
+
+  deleteProjet() {
+    this.modals
+      .addModal(ModalsComponent, {
+        title: 'Suppression du projet',
+        message: 'Etes-vous sûr de cette suppression ?'
+      })
+      .subscribe(result => {
+        if (result) {
+          this.service.deleteProjetById(this.id).subscribe(res => {
+            this.router.navigate(['/projets/list']);
+          });
+        }
+      });
+    }
+
+
+  
 }

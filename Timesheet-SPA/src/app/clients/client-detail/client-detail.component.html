@@ -1,16 +1,27 @@
-<div class="container">
-  <h4 style="text-align:center">Client {{client.id}}</h4>
+<div class="container-fluid">
+  <br />
+  <br />
+  <h4 style="text-align:center; margin-right: 2%"> Mrs/Mme {{client.name}}</h4>
   <hr />
   <div class="row">
-    <div class="col-3">
+    <div class="ml-auto mr-auto">
       <p>name: {{client.name}}</p>
       <p>residence: {{client.residence}}</p>
       <p>phone: {{client.phone}}</p>
       <p>mail: {{client.mail}}</p>
       <a [routerLink]="['/clients/edit',client.id]">edit</a>
+      <a [routerLink]="['/clients']" style="margin-left: 7%">Back to Clients</a>
+      <br />
+      <br />
+      <div>
+        <tr>
+          <td>
+            <button class="btn btn-danger" style="margin-left: 4%" (click)="deleteClient()">
+              Delete Client
+            </button>
+          </td>
+        </tr>
+      </div>
     </div>
   </div>
-  <div style="text-align:center">
-    <a [routerLink]="['/clients']">Back to Clients</a>
-</div>
 </div>

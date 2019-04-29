@@ -1,16 +1,26 @@
-<div class="container">
-  <h4 style="text-align:center">projet {{projet.id}}</h4>
+<div class="container-fluid">
+  <br />
+  <h4 style="text-align:center; margin-right: 3%">{{projet.name}}</h4>
   <hr />
   <div class="row">
-    <div class="col-3">
+    <div class="ml-auto mr-auto">
       <p>name: {{projet.name}}</p>
       <p>type: {{projet.type}}</p>
       <p>price: {{projet.price}}</p>
       <p>ClientId: {{projet.clientId}}</p>
       <a [routerLink]="['/projets/edit',projet.id]">edit</a>
+      <a [routerLink]="['/projets']" style="margin-left: 7%">Return</a>
+      <br />
+      <br />
+      <div class=" ml-auto mr-auto" >
+          <tr>
+            <td>
+                <button class="btn btn-danger" style="margin-left: 4%" (click)="deleteProjet()">
+                    Delete Project
+                </button>
+            </td>
+          </tr>
+      </div>
     </div>
   </div>
-  <div style="text-align:center">
-    <a [routerLink]="['/projets']">Back to projets</a>
-</div>
 </div>

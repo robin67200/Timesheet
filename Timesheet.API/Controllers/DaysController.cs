@@ -2,14 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Timesheet.API.Models;
 
 namespace Timesheet.API.Controllers
 {
-    
     [Route("api/[controller]")]
     [ApiController]
     public class DaysController : ControllerBase
@@ -38,7 +36,7 @@ namespace Timesheet.API.Controllers
 
             return Ok(day);
         }
-        // GET api/days/(userid)/(projetid)/(date)
+        // GET api/days/(userid)/(date)
         [HttpGet("{userId}/{date}")]
         public async Task<IActionResult> GetDay(int userId, DateTime date)
         {
@@ -58,7 +56,6 @@ namespace Timesheet.API.Controllers
             return Ok();
         }
 
-        // PUT api/clients/5
         [HttpPut("{userId}/{projetId}/{date}")]
         public async Task<IActionResult> Put(int userId, int projetId, DateTime date, [FromBody] Day day)
         {
@@ -69,6 +66,19 @@ namespace Timesheet.API.Controllers
             _context.Days.Update(dbDay);
             await _context.SaveChangesAsync();
 
+            return Ok();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> PutRange(int userId, int projetId, DateTime date, [FromBody] ICollection<Day> day)
+        {
+        try {
+            _context.Days.UpdateRange(day);
+            await _context.SaveChangesAsync();
+        } catch (DbUpdateConcurrencyException e) {
+            _context.Days.AddRange(day);
+            await _context.SaveChangesAsync();
+        }
             return Ok();
         }
 

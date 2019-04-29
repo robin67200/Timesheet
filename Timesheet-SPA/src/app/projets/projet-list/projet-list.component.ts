@@ -1,5 +1,5 @@
-import { TimeSheetsService } from 'src/app/services/timeSheets.service';
 import { Component, OnInit } from '@angular/core';
+import { ProjetsService } from '../services/projet.service';
 
 @Component({
   selector: 'app-projet-list',
@@ -10,19 +10,23 @@ export class ProjetListComponent implements OnInit {
   projets: any;
   clients: any;
 
-  constructor(private service: TimeSheetsService) {}
+  constructor(private service: ProjetsService) {}
 
   ngOnInit() {
-    this.GetProjets();
+    this.service.getProjets().subscribe(
+      response => {
+        this.projets = response;
+      }
+    )
   }
 
   GetProjets() {
     this.service.getProjets().subscribe(
       response => {
         this.projets = response;
-        this.service.getClients().subscribe(res => {
+        /*this.service.getClients().subscribe(res => {
           this.clients = res;
-        });
+        });*/
       },
       error => {
         console.log(error);

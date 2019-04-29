@@ -1,0 +1,35 @@
+<br />
+<div class="container-fluid">
+  <h4 style="text-align:center; margin-right: 3%"> {{user.name}}</h4>
+  
+  <hr />
+  <div class="row" >
+    <div class=" ml-auto mr-auto">
+      <br />
+      <p>name: {{user.name}}</p>
+      <p>residence: {{user.residence}}</p>
+      <p>phone: {{user.phone}}</p>
+      <p>mail: {{user.mail}}</p>
+      <p>statut: {{user.statut}}</p>
+      <p>salary: {{user.salary}}</p>
+      
+      <a [routerLink]="['/users/edit',user.id]">Edit</a>
+      <a [routerLink]="['/users']" style="margin-left: 7%"  >Return</a>
+      <br />
+      <br />
+      <div class=" ml-auto mr-auto" >
+          <tr>
+            <td>
+                <button class="btn btn-danger"  (click)="deleteUser()">
+                    Delete User
+                </button>
+            </td>
+          </tr>
+        </div>
+  </div>
+</div>
+
+</div>
+
+  
+

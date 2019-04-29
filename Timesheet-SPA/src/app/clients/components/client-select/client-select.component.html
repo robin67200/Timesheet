@@ -1,0 +1,5 @@
+<div [formGroup]="form">
+  <select formControlName="clientId" class="form-control w-25">
+    <option *ngFor="let client of clients" value="{{client.id}}">{{client.name}}</option>
+  </select>
+</div>
